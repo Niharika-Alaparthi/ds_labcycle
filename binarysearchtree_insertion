@@ -1,0 +1,48 @@
+class Node:
+    def __init__(self,item):
+        self.left=None
+        self.right=None
+        self.val = item
+def insert(root,item):
+    if root is None:
+        return Node(item)
+    else:
+        if root.val==item:
+            return root
+        elif root.val < item:
+            root.right=insert(root.right,item)
+        else:
+            root.left=insert(root.left,item)
+    return root
+def inorder(root):
+    if root:
+        inorder(root.left)
+        print(str(root.val)+ "-->",end=" ")
+        inorder(root.right)
+def preorder(root):
+    if root:
+        print(str(root.val)+ "-->",end=" ")
+        preorder(root.left)
+        preorder(root.right)
+def postorder(root):
+    if root:
+        postorder(root.left)
+        postorder(root.right)
+        print(str(root.val)+ "-->",end=" ")
+
+    
+        
+ 
+root=Node(6)
+root.left=Node(57)
+root.right=Node(2)
+root.left.left=Node(43)
+insert(root,49)
+insert(root,45)
+insert(root,57)
+print("inorder")
+inorder(root)
+print("\npreorder")
+preorder(root)
+print("\npostorder")
+postorder(root)
